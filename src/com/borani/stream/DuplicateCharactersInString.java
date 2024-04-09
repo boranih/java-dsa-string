@@ -3,7 +3,6 @@ package com.borani.stream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class DuplicateCharactersInString {
@@ -15,21 +14,18 @@ public class DuplicateCharactersInString {
     }
 
     public List<String> findDuplicate(String input) {
-        List<String> collect = Arrays.asList(input.split("")).stream()
+        return Arrays.stream(input.split(""))
                 .collect(Collectors.groupingBy(ch -> ch, Collectors.counting()))
                 .entrySet()
-                .stream().filter(entryValue -> entryValue.getValue()>1)
-                .map(entryKey->entryKey.getKey()).collect(Collectors.toList());
-
-        return collect;
+                .stream().filter(entryValue -> entryValue.getValue() > 1)
+                .map(Map.Entry::getKey).collect(Collectors.toList());
     }
 
     public Map<String, Long> findDuplicateWithOccurance(String input) {
-        Map<String, Long> collect = Arrays.asList(input.split("")).stream()
+        return Arrays.stream(input.split(""))
                 .collect(Collectors.groupingBy(ch -> ch, Collectors.counting()))
                 .entrySet()
-                .stream().filter(entryValue -> entryValue.getValue()>1)
+                .stream().filter(entryValue -> entryValue.getValue() > 1)
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-        return collect;
     }
 }

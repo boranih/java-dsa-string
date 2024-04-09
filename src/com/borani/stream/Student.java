@@ -1,5 +1,7 @@
 package com.borani.stream;
 
+import java.util.List;
+
 public class Student {
 
     /**
@@ -47,6 +49,8 @@ public class Student {
      */
     private int rank;
 
+    private List<String> interest;
+
     /**
      * Instantiates a new employee.
      *
@@ -61,7 +65,7 @@ public class Student {
      * @param rank           the rank
      */
     public Student(int id, String firstName, String lastName, int age, String gender, String departmantName,
-                   int joinedYear, String city, int rank) {
+                   int joinedYear, String city, int rank, List<String> interest) {
         super();
         this.id = id;
         this.firstName = firstName;
@@ -72,6 +76,7 @@ public class Student {
         this.joinedYear = joinedYear;
         this.city = city;
         this.rank = rank;
+        this.interest = interest;
     }
 
     /**
@@ -236,6 +241,14 @@ public class Student {
         this.rank = rank;
     }
 
+    public List<String> getInterest() {
+        return interest;
+    }
+
+    public void setInterest(List<String> interest) {
+        this.interest = interest;
+    }
+
     /**
      * To string.
      *
@@ -243,9 +256,18 @@ public class Student {
      */
     @Override
     public String toString() {
-        return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age
-                + ", gender=" + gender + ", departmantName=" + departmantName + ", joinedYear=" + joinedYear + ", city="
-                + city + ", rank=" + rank + "]";
+        return "Student{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", gender='" + gender + '\'' +
+                ", departmantName='" + departmantName + '\'' +
+                ", joinedYear=" + joinedYear +
+                ", city='" + city + '\'' +
+                ", rank=" + rank +
+                ", interest=" + interest +
+                '}';
     }
 
 }
